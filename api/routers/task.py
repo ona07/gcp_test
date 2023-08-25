@@ -5,7 +5,7 @@ router = APIRouter()
 
 @router.get("/tasks")
 async def list_tasks():
-    pass
+    return {"message": "hello world!"}
 
 
 @router.post("/tasks")
