@@ -1,7 +1,6 @@
 # python3.9のイメージをダウンロード
 FROM python:3.9-buster
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8080
 
 WORKDIR /src
 
@@ -19,4 +18,4 @@ RUN if [ -f pyproject.toml ]; then poetry install --no-root; fi
 COPY . .
 
 # uvicornのサーバーを立ち上げる
-ENTRYPOINT ["poetry", "run", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD ["sh", "-c", "poetry run uvicorn api.main:app --host 0.0.0.0 --port ${PORT}"]
